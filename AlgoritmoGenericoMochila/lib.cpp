@@ -271,6 +271,7 @@ bool CSListStrDbl::mfBlend(char *pInd1, char *pInd2)
 {
 	PNODE lTemp1,lTemp2;
 	int burbuja;
+	char * bubble="";
 	lTemp1 = mfSearch(pInd1);
 	lTemp2 = mfSearch(pInd2);
 	lTemp1 = lTemp1->sList->aHead;
@@ -280,8 +281,14 @@ bool CSListStrDbl::mfBlend(char *pInd1, char *pInd2)
 		burbuja = lTemp1->sValue;
 		lTemp1->sValue = lTemp2->sValue;
 		lTemp2->sValue = burbuja;
+
+		strcpy(bubble, lTemp1->sVal);
+		strcpy(lTemp1->sVal, lTemp2->sVal);
+		strcpy(lTemp2->sVal, bubble);
+
 		lTemp1 = lTemp1->sNxt->sNxt;
 		lTemp2 = lTemp2->sNxt->sNxt;
+		
 	}
 
 }
