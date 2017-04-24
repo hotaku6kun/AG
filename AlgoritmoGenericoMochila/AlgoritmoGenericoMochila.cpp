@@ -20,6 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int randNumber, value;
 	char * obj = "";
 	CSListStrDbl lCortina, lHijosCortina;
+	PNODE	lTemp1,lTemp2;
 
 	for(int p=0; p <= 200 ; p++)
 	{
@@ -76,9 +77,26 @@ int _tmain(int argc, _TCHAR* argv[])
 			{
 
 			}
+			
+			if (lTemp1==NULL||lTemp2==NULL)
+			{
+				sprintf(number, "%d", i);
+				value = lCortina.mfSumaVal(number);
+				if (20<=value||value<=30)
+				{
+					lTemp1;
+				}
+			}
 			else
 			{
-			
+				lCortina.mfBlend(lTemp1->sVal,lTemp2->sVal);
+				lTemp1 = NULL;
+				lTemp2 = NULL;
+			}
+			if (lTemp1 != NULL&&i >= 199)
+			{
+				lHijosCortina.mpInsert(lTemp1);
+				lTemp1 = NULL;
 			}
 		}
 	} while (repeat == false);

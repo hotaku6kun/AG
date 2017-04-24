@@ -44,6 +44,21 @@ void CSListStrDbl::mpInsert(char *pVal)
 	}
 } // mpInsert
 
+void CSListStrDbl::mpInsert(PNODE pVal)
+{
+	PNODE lTemp;
+	if (aHead == NULL)
+	{
+		aHead = pVal;
+		aTail = aHead;
+	}
+	else {
+		lTemp = pVal;
+		aTail->sNxt = lTemp;
+		aTail = lTemp;
+	}
+} // mpInsert
+
 void CSListStrDbl::mpInsert(char *pVal, int pValue)
 {
 	PNODE lTemp;

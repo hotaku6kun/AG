@@ -23,6 +23,7 @@ public:
 	~CSListStrDbl(void);
 
 	void mpInsert(char *pVal);
+	void mpInsert(PNODE pVal);
 	void mpInsert(char *pVal,int pValue);
 	void mpInsert(char *pCat, char *pName, int pValue);
 	void mpShow(bool pBack = false);
