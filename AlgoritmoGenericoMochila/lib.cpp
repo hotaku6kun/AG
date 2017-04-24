@@ -281,6 +281,13 @@ int CSListStrDbl::mfSumaVal(char *pInd)
 	return sumaVal;
 }
 
+PNODE CSListStrDbl::mfGiveNode(char *pInd)
+{
+	PNODE lTemp;
+	lTemp = mfSearch(pInd);
+	return lTemp;
+}
+
 
 bool CSListStrDbl::mfBlend(char *pInd1, char *pInd2)
 {

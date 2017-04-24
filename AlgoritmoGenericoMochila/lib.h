@@ -33,6 +33,7 @@ public:
 	bool mfIsEmpty(char *pMes);
 	bool mfBlend(char *pInd1, char *pInd2);
 	int mfSumaVal(char *pInd);
+	PNODE mfGiveNode(char *pInd);
 private:
 	PNODE mfInit(char *pVal,int pValue);
 	PNODE mfSearch(char *pval);

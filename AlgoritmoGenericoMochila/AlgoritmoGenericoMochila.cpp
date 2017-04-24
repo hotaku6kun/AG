@@ -20,47 +20,47 @@ int _tmain(int argc, _TCHAR* argv[])
 	int randNumber, value;
 	char * obj = "";
 	CSListStrDbl lCortina, lHijosCortina;
-	PNODE	lTemp1,lTemp2;
+	PNODE	lTemp1,lTemp2,lRand,lSolution;
 
 	for(int p=0; p <= 200 ; p++)
 	{
-		for (int i=0;i++;)
+		for (int i=0;i<8;i++)
 		{
 			sprintf(number, "%d", p);
 			randNumber = rand() % 8 + 1;
 			switch (randNumber)
 			{
 			case 1:
-				value = 0;
-				strcpy(obj,"");
+				value = 10;
+				strcpy(obj,"Botiquin");
 				break;
 			case 2:
-				value = 0;
-				strcpy(obj, "");
+				value = 8;
+				strcpy(obj, "cobija");
 				break;
 			case 3:
-				value = 0;
-				strcpy(obj, "");
+				value = 16;
+				strcpy(obj, "radio");
 				break;
 			case 4:
-				value = 0;
-				strcpy(obj, "");
+				value = 1;
+				strcpy(obj, "chocolate");
 				break;
 			case 5:
-				value = 0;
-				strcpy(obj, "");
+				value = 4;
+				strcpy(obj, "Botella de agua");
 				break;
 			case 6:
-				value = 0;
-				strcpy(obj, "");
+				value = 2;
+				strcpy(obj, "linterna");
 				break;
 			case 7:
-				value = 0;
-				strcpy(obj, "");
+				value = 7;
+				strcpy(obj, "lata de atun");
 				break;
 			case 8:
-				value = 0;
-				strcpy(obj, "");
+				value = 5;
+				strcpy(obj, "brujula");
 				break;
 			default:
 					break;
@@ -72,24 +72,77 @@ int _tmain(int argc, _TCHAR* argv[])
 	do {
 		for (int i = 0;i<200; i=i+2)
 		{
-			randNumber = rand() % 100 + 1;
-			if (randNumber<=5)
-			{
-
-			}
-			
 			if (lTemp1==NULL||lTemp2==NULL)
 			{
 				sprintf(number, "%d", i);
 				value = lCortina.mfSumaVal(number);
+				if (value==25)
+				{
+					lSolution=lCortina.mfGiveNode(number);
+				}
 				if (20<=value||value<=30)
 				{
-					lTemp1;
+					randNumber = rand() % 100 + 1;
+					if (randNumber <= 5)
+					{
+						lRand = lCortina.mfGiveNode(number);
+						randNumber = rand() % 8 + 1;
+						switch (randNumber)
+						{
+						case 1:
+							value = 10;
+							strcpy(obj, "Botiquin");
+							break;
+						case 2:
+							value = 8;
+							strcpy(obj, "cobija");
+							break;
+						case 3:
+							value = 16;
+							strcpy(obj, "radio");
+							break;
+						case 4:
+							value = 1;
+							strcpy(obj, "chocolate");
+							break;
+						case 5:
+							value = 4;
+							strcpy(obj, "Botella de agua");
+							break;
+						case 6:
+							value = 2;
+							strcpy(obj, "linterna");
+							break;
+						case 7:
+							value = 7;
+							strcpy(obj, "lata de atun");
+							break;
+						case 8:
+							value = 5;
+							strcpy(obj, "brujula");
+							break;
+						default:
+							break;
+						}
+							strcpy(lRand->sVal,obj);
+							lRand->sValue = value;
+					}
+					if (lTemp1==NULL)
+					{
+						lTemp1 = lCortina.mfGiveNode(number);
+						lHijosCortina.mpInsert(lTemp1);
+					}
+					else
+					{
+						lTemp2 = lCortina.mfGiveNode(number);
+						lHijosCortina.mpInsert(lTemp2);
+					}
 				}
 			}
 			else
 			{
-				lCortina.mfBlend(lTemp1->sVal,lTemp2->sVal);
+				lHijosCortina.mfBlend(lTemp1->sVal,lTemp2->sVal);
+
 				lTemp1 = NULL;
 				lTemp2 = NULL;
 			}
@@ -99,13 +152,17 @@ int _tmain(int argc, _TCHAR* argv[])
 				lTemp1 = NULL;
 			}
 		}
+		if (lSolution != NULL)
+		{
+			repeat = true;
+		}
+		else
+		{
+			lCortina = lHijosCortina;
+			lHijosCortina.mfDeleteAll();
+		}
 	} while (repeat == false);
 
-	lCortina.mpShowII();
-	lCortina.mfDeleteAll("10", "Roberto");
-	lCortina.mpShowII();
-	lCortina.mfDeleteAll("10", "Coy");
-	lCortina.mpShowII();
 
 
 	return 0;
